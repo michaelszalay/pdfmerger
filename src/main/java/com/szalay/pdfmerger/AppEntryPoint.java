@@ -19,9 +19,9 @@ public class AppEntryPoint {
         System.out.println("Merging all pdfs from root " + rootDir);
 
         //Walk through directory and merge all pdfds...
-        Files.walkFileTree(new File(rootDir).toPath(), new FileVisitor<Path>() {
+        Files.walkFileTree(new File(rootDir).toPath(), new FileVisitor<>() {
             @Override
-            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
                 return FileVisitResult.CONTINUE;
             }
 
@@ -38,12 +38,12 @@ public class AppEntryPoint {
             }
 
             @Override
-            public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+            public FileVisitResult visitFileFailed(Path file, IOException exc) {
                 return FileVisitResult.CONTINUE;
             }
 
             @Override
-            public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+            public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
                 return FileVisitResult.CONTINUE;
             }
         });
